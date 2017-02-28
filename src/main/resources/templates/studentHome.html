@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>欢迎</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#"></a>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">基本信息</a></li>
+                        <li><a href="/course/all">选课</a></li>
+                        <li><a href="#">退课</a></li>
+                        <li><a href="#">统计信息</a></li>
+                        <li><a href="#">修改信息</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <h2 th:text="'欢迎， '+${stu.name}"></h2>
+        <div>
+            <span th:text="'积分： '+${stu.point}">积分</span>
+            <br/>
+            <span th:text="'等级： '+${stu.level}">等级</span>
+            <br/>
+            <span th:text="'会员卡状态： '+${stu.state}">会员卡状态</span>
+            <br/>
+            <span th:text="'会员卡余额： '+${stu.balance}">会员卡余额</span>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="js/bootstrap.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>选课</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#"></a>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="/student/home">基本信息</a></li>
+                        <li class="active"><a href="#">选课</a></li>
+                        <li><a href="#">退课</a></li>
+                        <li><a href="#">统计信息</a></li>
+                        <li><a href="#">修改信息</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <h2>可选课程</h2>
+        <div class="table-responsive">
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>课程名称</th>
+                    <th>开始日期</th>
+                    <th>结束日期</th>
+                    <th>授课老师</th>
+                    <th>价格</th>
+                    <th>机构</th>
+                    <th>选择</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="course : ${courses}">
+                    <td th:text="${course.courseName}">课程名称</td>
+                    <td th:text="${course.startTime}">开始日期</td>
+                    <td th:text="${course.endTime}">结束日期</td>
+                    <td th:text="${course.teacher}">授课老师</td>
+                    <td th:text="${course.price}">价格</td>
+                    <td th:text="${course.institutionId}">机构</td>
+                    <td><input type="checkbox" name="chk" th:value="${course.classId}"/></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-xs-6 col-md-offset-6">
+            <button class="btn btn-default" id="actionBtn">提交</button>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#actionBtn').bind("click", function () {
+            var list = new Array();
+            $('input[type="checkbox"][name="chk"]:checked').each(
+                function () {
+                    list.push($(this).val());
+                }
+            );
+
+            $.ajax("/course/select/" + list, {
+                type: 'GET',
+                success: function (data) {
+                    alert(data.msg);
+                },
+                error: function () {
+                    alert("出错了！！:");
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
