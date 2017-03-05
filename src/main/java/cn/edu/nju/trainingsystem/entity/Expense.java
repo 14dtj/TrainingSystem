@@ -1,7 +1,7 @@
 package cn.edu.nju.trainingsystem.entity;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  * Created by tjDu on 2017/3/5.
@@ -10,10 +10,10 @@ import java.sql.Date;
 @Table(name = "expense", schema = "training_college")
 public class Expense {
     private String studentId;
-    private Date date;
+    private Timestamp date;
     private Double expense;
     private int id;
-    private String reason;
+
 
     @Basic
     @Column(name = "student_id", nullable = false, length = 255)
@@ -27,11 +27,11 @@ public class Expense {
 
     @Basic
     @Column(name = "date", nullable = false)
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 
@@ -53,15 +53,5 @@ public class Expense {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "reason", nullable = true, length = 255)
-    public String getReason() {
-        return reason;
-    }
-
-    public void setReason(String reason) {
-        this.reason = reason;
     }
 }

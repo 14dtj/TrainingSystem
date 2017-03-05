@@ -47,4 +47,11 @@ public class StudentController {
         studentService.editInfo(vo);
         return "redirect:/student/basicInfo";
     }
+
+    @RequestMapping(value = "/analysis", method = RequestMethod.GET)
+    public String getAnalysisInfo(HttpServletRequest request, Model model) {
+        String username = (String) request.getSession().getAttribute("username");
+        model.addAttribute("model", studentService.getAnalysisInfo(username));
+        return "studentAnalysis";
+    }
 }

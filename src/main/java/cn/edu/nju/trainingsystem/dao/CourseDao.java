@@ -17,5 +17,11 @@ public interface CourseDao {
 
     boolean dropCourse(List<DropRecord> data);
 
+    /**
+     * 当前可以退选的课程
+     *
+     * @param username
+     * @return
+     */
     List<Clazz> getSelectedCourse(String username);
 }

@@ -19,22 +19,69 @@
                         <li><a href="/course/all">选课</a></li>
                         <li><a href="/course/selected">退课</a></li>
                         <li class="active"><a href="#">统计信息</a></li>
-                        <li><a href="#">修改信息</a></li>
+                        <li><a href="/student/basicInfo">修改信息</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
         <h2>曾经选过的课程</h2>
-        <div>
-
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>课程名称</th>
+                    <th>开始日期</th>
+                    <th>结束日期</th>
+                    <th>授课老师</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="course : ${model.enrollRecordList}">
+                    <td th:text="${course.courseName}">课程名称</td>
+                    <td th:text="${course.startTime}">开始日期</td>
+                    <td th:text="${course.endTime}">结束日期</td>
+                    <td th:text="${course.teacher}">授课老师</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
         <h2>曾经退选过的课程</h2>
-        <div>
-
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>课程名称</th>
+                    <th>开始日期</th>
+                    <th>结束日期</th>
+                    <th>授课老师</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="course : ${model.dropRecordList}">
+                    <td th:text="${course.courseName}">课程名称</td>
+                    <td th:text="${course.startTime}">开始日期</td>
+                    <td th:text="${course.endTime}">结束日期</td>
+                    <td th:text="${course.teacher}">授课老师</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
         <h2>消费记录</h2>
-        <div>
-
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>时间</th>
+                    <th>花销</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="ex : ${model.expenseList}">
+                    <td th:text="${ex.date}">时间</td>
+                    <td th:text="${ex.expense}">花销</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

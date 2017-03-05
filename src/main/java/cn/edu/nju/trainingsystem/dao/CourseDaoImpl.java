@@ -41,6 +41,12 @@ public class CourseDaoImpl implements CourseDao {
             Query query = em.createNativeQuery(sql);
             query.setParameter(1, record.getStudentId()).setParameter(2, record.getClassId());
             query.executeUpdate();
+            sql = "insert into expense(student_id,expense) " +
+                    "select e.student_id ,c.price from enroll_record e , class  c " +
+                    "where c.class_id = e.class_id and e.student_id = ?1 and e.class_id =?2 ";
+            query = em.createNativeQuery(sql);
+            query.setParameter(1, record.getStudentId()).setParameter(2, record.getClassId());
+            query.executeUpdate();
         }
         return true;
     }
