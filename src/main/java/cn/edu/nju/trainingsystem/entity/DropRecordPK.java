@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * Created by tjDu on 2017/3/5.
  */
-public class EnrollRecordPK implements Serializable {
+public class DropRecordPK implements Serializable {
     private String studentId;
     private int classId;
 
@@ -36,7 +36,7 @@ public class EnrollRecordPK implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        EnrollRecordPK that = (EnrollRecordPK) o;
+        DropRecordPK that = (DropRecordPK) o;
 
         if (classId != that.classId) return false;
         if (studentId != null ? !studentId.equals(that.studentId) : that.studentId != null) return false;

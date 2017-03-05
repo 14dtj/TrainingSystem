@@ -22,8 +22,9 @@ public class CourseController {
     private CourseService courseService;
 
     @RequestMapping(value = "/all")
-    public String getCourseList(Model model) {
-        model.addAttribute("courses", courseService.getCourseList());
+    public String getCourseList(Model model, HttpServletRequest request) {
+        String username = (String) request.getSession().getAttribute("username");
+        model.addAttribute("courses", courseService.getCourseList(username));
         return "enroll";
     }
 
@@ -37,5 +38,24 @@ public class CourseController {
         Map<String, Object> map = new HashMap<>();
         map.put("msg", "success");
         return map;
+    }
+
+    @RequestMapping(value = "/drop/{list}", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    Map<String, Object> dropCourse(@PathVariable("list") String list, HttpServletRequest request) {
+        String[] array = list.split(",");
+        String username = (String) request.getSession().getAttribute("username");
+        courseService.dropCourse(array, username);
+        Map<String, Object> map = new HashMap<>();
+        map.put("msg", "success");
+        return map;
+    }
+
+    @RequestMapping(value = "/selected")
+    public String getSelectedCourse(Model model, HttpServletRequest request) {
+        String username = (String) request.getSession().getAttribute("username");
+        model.addAttribute("courses", courseService.getSelectedCourse(username));
+        return "drop";
     }
 }

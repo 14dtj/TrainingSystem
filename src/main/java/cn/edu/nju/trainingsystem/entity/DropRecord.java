@@ -6,13 +6,12 @@ import javax.persistence.*;
  * Created by tjDu on 2017/3/5.
  */
 @Entity
-@Table(name = "enroll_record", schema = "training_college")
-@IdClass(EnrollRecordPK.class)
-public class EnrollRecord {
+@Table(name = "drop_record", schema = "training_college", catalog = "")
+@IdClass(DropRecordPK.class)
+public class DropRecord {
     private String studentId;
     private int classId;
     private String institutionId;
-    private byte mark;
 
     @Id
     @Column(name = "student_id", nullable = false, length = 255)
@@ -44,13 +43,26 @@ public class EnrollRecord {
         this.institutionId = institutionId;
     }
 
-    @Basic
-    @Column(name = "mark", nullable = false)
-    public byte getMark() {
-        return mark;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        DropRecord that = (DropRecord) o;
+
+        if (classId != that.classId) return false;
+        if (studentId != null ? !studentId.equals(that.studentId) : that.studentId != null) return false;
+        if (institutionId != null ? !institutionId.equals(that.institutionId) : that.institutionId != null)
+            return false;
+
+        return true;
     }
 
-    public void setMark(byte mark) {
-        this.mark = mark;
+    @Override
+    public int hashCode() {
+        int result = studentId != null ? studentId.hashCode() : 0;
+        result = 31 * result + classId;
+        result = 31 * result + (institutionId != null ? institutionId.hashCode() : 0);
+        return result;
     }
 }

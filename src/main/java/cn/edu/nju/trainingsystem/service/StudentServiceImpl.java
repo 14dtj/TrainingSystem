@@ -1,8 +1,8 @@
 package cn.edu.nju.trainingsystem.service;
 
 import cn.edu.nju.trainingsystem.dao.StudentDao;
-import cn.edu.nju.trainingsystem.entity.Student;
 
+import cn.edu.nju.trainingsystem.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,5 +23,10 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Student getBasicInfo(String id) {
         return studentDao.getBasicInfo(id);
+    }
+
+    @Override
+    public boolean editInfo(Student student) {
+        return studentDao.editInfo(student);
     }
 }

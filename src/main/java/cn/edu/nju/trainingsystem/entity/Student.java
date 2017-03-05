@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.sql.Date;
 
 /**
- * Created by tjDu on 2017/2/25.
+ * Created by tjDu on 2017/3/5.
  */
 @Entity
 public class Student {
@@ -111,5 +111,38 @@ public class Student {
         this.state = state;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        Student student = (Student) o;
+
+        if (id != null ? !id.equals(student.id) : student.id != null) return false;
+        if (password != null ? !password.equals(student.password) : student.password != null) return false;
+        if (bankCard != null ? !bankCard.equals(student.bankCard) : student.bankCard != null) return false;
+        if (balance != null ? !balance.equals(student.balance) : student.balance != null) return false;
+        if (level != null ? !level.equals(student.level) : student.level != null) return false;
+        if (point != null ? !point.equals(student.point) : student.point != null) return false;
+        if (name != null ? !name.equals(student.name) : student.name != null) return false;
+        if (lastRechargeDate != null ? !lastRechargeDate.equals(student.lastRechargeDate) : student.lastRechargeDate != null)
+            return false;
+        if (state != null ? !state.equals(student.state) : student.state != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (bankCard != null ? bankCard.hashCode() : 0);
+        result = 31 * result + (balance != null ? balance.hashCode() : 0);
+        result = 31 * result + (level != null ? level.hashCode() : 0);
+        result = 31 * result + (point != null ? point.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (lastRechargeDate != null ? lastRechargeDate.hashCode() : 0);
+        result = 31 * result + (state != null ? state.hashCode() : 0);
+        return result;
+    }
 }

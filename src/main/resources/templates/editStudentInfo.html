@@ -15,24 +15,29 @@
                 </div>
                 <div>
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">基本信息</a></li>
+                        <li><a href="/student/home">基本信息</a></li>
                         <li><a href="/course/all">选课</a></li>
                         <li><a href="/course/selected">退课</a></li>
                         <li><a href="#">统计信息</a></li>
-                        <li><a href="/student/basicInfo">修改信息</a></li>
+                        <li class="active"><a href="#">修改信息</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <h2 th:text="'欢迎， '+${stu.name}"></h2>
+        <h2>修改个人信息</h2>
         <div>
-            <span th:text="'积分： '+${stu.point}">积分</span>
-            <br/>
-            <span th:text="'等级： '+${stu.level}">等级</span>
-            <br/>
-            <span th:text="'会员卡状态： '+${stu.state}">会员卡状态</span>
-            <br/>
-            <span th:text="'会员卡余额： '+${stu.balance}">会员卡余额</span>
+            <form action="/student/editInfo" method="post">
+                姓名：<br/>
+                <input type="text" name="name" id="name" th:value="${stu.name}"/>
+                <br/>
+                密码：<br/>
+                <input type="password" name="password" id="password" value="***"/>
+                <br/>
+                绑定银行卡：<br/>
+                <input type="text" name="bankcard" th:value="${stu.bankCard}" id="bankcard"/>
+                <br/>
+                <input type="submit" value="修改"/>
+            </form>
         </div>
     </div>
 </div>

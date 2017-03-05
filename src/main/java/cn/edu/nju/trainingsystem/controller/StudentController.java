@@ -26,4 +26,25 @@ public class StudentController {
         model.addAttribute("stu", stu);
         return "studentHome";
     }
+
+    @RequestMapping(value = "/basicInfo", method = RequestMethod.GET)
+    public String getBasicInfo(Model model, HttpServletRequest request) {
+        String id = (String) request.getSession().getAttribute("username");
+        Student stu = studentService.getBasicInfo(id);
+        model.addAttribute("stu", stu);
+        return "editStudentInfo";
+    }
+
+
+    @RequestMapping(value = "/editInfo", method = RequestMethod.POST)
+    public String editInfo(String name, String password, String bankcard, HttpServletRequest request) {
+        String username = (String) request.getSession().getAttribute("username");
+        Student vo = new Student();
+        vo.setId(username);
+        vo.setBankCard(bankcard);
+        vo.setName(name);
+        vo.setPassword(password);
+        studentService.editInfo(vo);
+        return "redirect:/student/basicInfo";
+    }
 }

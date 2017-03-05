@@ -7,17 +7,17 @@ import java.io.Serializable;
 /**
  * Created by tjDu on 2017/3/5.
  */
-public class EnrollRecordPK implements Serializable {
-    private String studentId;
+public class GradeRecordPK implements Serializable {
+    private int studentId;
     private int classId;
 
-    @Column(name = "student_id", nullable = false, length = 255)
+    @Column(name = "student_id", nullable = false)
     @Id
-    public String getStudentId() {
+    public int getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(String studentId) {
+    public void setStudentId(int studentId) {
         this.studentId = studentId;
     }
 
@@ -36,17 +36,17 @@ public class EnrollRecordPK implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        EnrollRecordPK that = (EnrollRecordPK) o;
+        GradeRecordPK that = (GradeRecordPK) o;
 
+        if (studentId != that.studentId) return false;
         if (classId != that.classId) return false;
-        if (studentId != null ? !studentId.equals(that.studentId) : that.studentId != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = studentId != null ? studentId.hashCode() : 0;
+        int result = studentId;
         result = 31 * result + classId;
         return result;
     }

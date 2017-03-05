@@ -16,15 +16,15 @@
                 <div>
                     <ul class="nav navbar-nav">
                         <li><a href="/student/home">基本信息</a></li>
-                        <li class="active"><a href="#">选课</a></li>
-                        <li><a href="/course/selected">退课</a></li>
+                        <li><a href="/course/all">选课</a></li>
+                        <li class="active"><a href="#">退课</a></li>
                         <li><a href="#">统计信息</a></li>
                         <li><a href="/student/basicInfo">修改信息</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <h2>可选课程</h2>
+        <h2>已选课程</h2>
         <div class="table-responsive">
 
             <table class="table">
@@ -54,7 +54,7 @@
             </table>
         </div>
         <div class="col-xs-6 col-md-offset-6">
-            <button class="btn btn-default" id="actionBtn">提交</button>
+            <button class="btn btn-default" id="actionBtn">退课</button>
         </div>
     </div>
 </div>
@@ -71,7 +71,7 @@
                 }
             );
 
-            $.ajax("/course/select/" + list, {
+            $.ajax("/course/drop/" + list, {
                 type: 'GET',
                 success: function (data) {
                     alert(data.msg);

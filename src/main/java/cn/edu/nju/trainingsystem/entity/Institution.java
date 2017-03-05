@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by tjDu on 2017/2/27.
+ * Created by tjDu on 2017/3/5.
  */
 @Entity
 public class Institution {

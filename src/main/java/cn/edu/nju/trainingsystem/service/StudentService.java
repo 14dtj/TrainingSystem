@@ -15,4 +15,12 @@ public interface StudentService {
      * @return
      */
     Student getBasicInfo(String id);
+
+    /**
+     * 修改学生信息
+     *
+     * @param student
+     * @return
+     */
+    boolean editInfo(Student student);
 }

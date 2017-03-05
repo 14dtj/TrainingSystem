@@ -9,11 +9,11 @@ import java.util.List;
  */
 public interface CourseService {
     /**
-     * 所有课程
+     * 所有未选的课程
      *
      * @return
      */
-    List<Clazz> getCourseList();
+    List<Clazz> getCourseList(String username);
 
     /**
      * 选课
@@ -23,4 +23,21 @@ public interface CourseService {
      * @return
      */
     boolean selectCourse(String[] courseList, String username);
+
+    /**
+     * 退课
+     *
+     * @param courseList
+     * @param username
+     * @return
+     */
+    boolean dropCourse(String[] courseList, String username);
+
+    /**
+     * 所有已选的课程
+     *
+     * @param username
+     * @return
+     */
+    List<Clazz> getSelectedCourse(String username);
 }

@@ -8,10 +8,15 @@
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="current_session_context_class">thread</property>
         <property name="packagesToScan">cn.edu.nju.trainingsystem.entity</property>
-        <mapping class="cn.edu.nju.trainingsystem.entity.Student"/>
         <mapping class="cn.edu.nju.trainingsystem.entity.Clazz"/>
-        <mapping class="cn.edu.nju.trainingsystem.entity.Institution"/>
+        <mapping class="cn.edu.nju.trainingsystem.entity.DropRecord"/>
         <mapping class="cn.edu.nju.trainingsystem.entity.EnrollRecord"/>
+        <mapping class="cn.edu.nju.trainingsystem.entity.GradeRecord"/>
+        <mapping class="cn.edu.nju.trainingsystem.entity.Institution"/>
+        <mapping class="cn.edu.nju.trainingsystem.entity.InstitutionPayment"/>
+        <mapping class="cn.edu.nju.trainingsystem.entity.Student"/>
+        <mapping class="cn.edu.nju.trainingsystem.entity.Expense"/>
+
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->

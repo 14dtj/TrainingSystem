@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import java.util.List;
 
 
@@ -13,6 +14,7 @@ import java.util.List;
  * Created by tjDu on 2017/2/24.
  */
 @Repository
+@Transactional
 public class StudentDaoImpl implements StudentDao {
     @PersistenceContext
     private EntityManager em;
@@ -32,5 +34,14 @@ public class StudentDaoImpl implements StudentDao {
         query.setParameter(1, id);
         List<Student> users = query.getResultList();
         return users.get(0);
+    }
+
+    @Override
+    public boolean editInfo(Student student) {
+        Student old = em.find(Student.class, student.getId());
+        old.setPassword(student.getPassword());
+        old.setName(student.getName());
+        old.setBankCard(student.getBankCard());
+        return true;
     }
 }

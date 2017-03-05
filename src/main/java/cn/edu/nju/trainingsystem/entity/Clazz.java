@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.sql.Date;
 
 /**
- * Created by tjDu on 2017/2/27.
+ * Created by tjDu on 2017/3/5.
  */
 @Entity
 @Table(name = "class", schema = "training_college")
@@ -15,7 +15,7 @@ public class Clazz {
     private Date endTime;
     private String courseName;
     private String teacher;
-    private BigDecimal price;
+    private double price;
     private int classId;
 
     @Basic
@@ -70,11 +70,11 @@ public class Clazz {
 
     @Basic
     @Column(name = "price", nullable = true, precision = 2)
-    public BigDecimal getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -87,4 +87,6 @@ public class Clazz {
     public void setClassId(int classId) {
         this.classId = classId;
     }
+
+
 }

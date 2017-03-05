@@ -16,4 +16,6 @@ public interface StudentDao {
      * @return
      */
     Student getBasicInfo(String id);
+
+    boolean editInfo(Student student);
 }
