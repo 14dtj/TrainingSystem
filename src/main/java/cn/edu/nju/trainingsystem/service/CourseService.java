@@ -1,5 +1,6 @@
 package cn.edu.nju.trainingsystem.service;
 
+import cn.edu.nju.trainingsystem.entity.Apply;
 import cn.edu.nju.trainingsystem.entity.Clazz;
 
 import java.util.List;
@@ -40,4 +41,12 @@ public interface CourseService {
      * @return
      */
     List<Clazz> getSelectedCourse(String username);
+
+    /**
+     * 机构开班申请
+     *
+     * @param apply
+     * @return
+     */
+    boolean applyAddCourse(Apply apply);
 }

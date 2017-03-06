@@ -1,17 +1,18 @@
 package cn.edu.nju.trainingsystem.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
- * Created by tjDu on 2017/3/5.
+ * Created by tjDu on 2017/3/6.
  */
 @Entity
+@Table(name = "institution", schema = "training_college")
 public class Institution {
     private String id;
     private double balance;
+    private String name;
+    private String manager;
+    private String password;
 
     @Id
     @Column(name = "id", nullable = false, length = 255)
@@ -33,26 +34,33 @@ public class Institution {
         this.balance = balance;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Institution that = (Institution) o;
-
-        if (Double.compare(that.balance, balance) != 0) return false;
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-
-        return true;
+    @Basic
+    @Column(name = "name", nullable = true, length = 255)
+    public String getName() {
+        return name;
     }
 
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        result = id != null ? id.hashCode() : 0;
-        temp = Double.doubleToLongBits(balance);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Basic
+    @Column(name = "manager", nullable = true, length = 255)
+    public String getManager() {
+        return manager;
+    }
+
+    public void setManager(String manager) {
+        this.manager = manager;
+    }
+
+    @Basic
+    @Column(name = "password", nullable = true, length = 255)
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

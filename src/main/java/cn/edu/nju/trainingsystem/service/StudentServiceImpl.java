@@ -40,4 +40,14 @@ public class StudentServiceImpl implements StudentService {
         vo.setExpenseList(studentDao.getExpenseRecord(username));
         return vo;
     }
+
+    @Override
+    public boolean deleteStudent(String username) {
+        return studentDao.deleteStudent(username);
+    }
+
+    @Override
+    public boolean register(Student student) {
+        return studentDao.register(student);
+    }
 }

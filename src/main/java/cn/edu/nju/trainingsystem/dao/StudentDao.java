@@ -46,4 +46,14 @@ public interface StudentDao {
      * @return
      */
     List<Clazz> getHistoryDroped(String username);
+
+    /**
+     * 取消会员资格
+     *
+     * @param username
+     * @return
+     */
+    boolean deleteStudent(String username);
+
+    boolean register(Student student);
 }

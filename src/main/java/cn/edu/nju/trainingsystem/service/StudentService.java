@@ -32,4 +32,20 @@ public interface StudentService {
      * @return
      */
     StuAnalysisVO getAnalysisInfo(String username);
+
+    /**
+     * 取消会员资格
+     *
+     * @param username
+     * @return
+     */
+    boolean deleteStudent(String username);
+
+    /**
+     * 注册
+     *
+     * @param student
+     * @return
+     */
+    boolean register(Student student);
 }

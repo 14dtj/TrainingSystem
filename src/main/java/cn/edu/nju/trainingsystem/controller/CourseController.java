@@ -1,5 +1,6 @@
 package cn.edu.nju.trainingsystem.controller;
 
+import cn.edu.nju.trainingsystem.entity.Apply;
 import cn.edu.nju.trainingsystem.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.*;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by tjDu on 2017/2/27.
@@ -57,5 +62,20 @@ public class CourseController {
         String username = (String) request.getSession().getAttribute("username");
         model.addAttribute("courses", courseService.getSelectedCourse(username));
         return "drop";
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public void applyAddCourse(String teacher, String price, Date start, Date end, String name,
+                                 HttpServletRequest request, HttpServletResponse response) {
+        String id = (String) request.getSession().getAttribute("institution");
+        Apply vo = new Apply();
+        vo.setCourseName(name);
+        vo.setEndTime(end);
+        vo.setStartTime(start);
+        vo.setInstitutionId(id);
+        vo.setPrice(Double.parseDouble(price));
+        vo.setTeacher(teacher);
+        courseService.applyAddCourse(vo);
+        ResponseHelper.generateAlert(response, "申请成功！等待经理审批！");
     }
 }

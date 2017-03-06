@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>南大青鸟培训机构</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#"></a>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="/institution/home">开班申请</a></li>
+                        <li class="active"><a href="#">修改班级信息</a></li>
+                        <li><a href="/student/analysis">成绩登记</a></li>
+                        <li><a href="/student/basicInfo">退课登记</a></li>
+                        <li><a href="/course/all">统计信息</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-md-offset-5">
+            <h1>班级信息</h1>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>课程名称</th>
+                <th>开始日期</th>
+                <th>结束日期</th>
+                <th>授课老师</th>
+                <th>价格</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="course : ${model}">
+                <td><a th:href="@{'/institution/course/'+${course.classId}}" th:text="${course.courseName}"></a>
+                </td>
+                <td th:text="${course.startTime}">开始日期</td>
+                <td th:text="${course.endTime}">结束日期</td>
+                <td th:text="${course.teacher}">授课老师</td>
+                <td th:text="${course.price}">价格</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="../static/js/bootstrap.js"></script>
+</body>
+</html>

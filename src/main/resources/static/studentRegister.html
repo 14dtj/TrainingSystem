@@ -15,36 +15,49 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-6 col-md-offset-3">
-            <h1>南大青鸟培训机构</h1>
+            <h1>会员注册</h1>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-6 col-md-offset-3">
-            <form method="post" role="form" id="form_login" action="/login">
+            <form method="post" role="form" id="form_login" action="/student/register">
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-user"></i>
+                            <i class="fa fa-user">姓名</i>
                         </div>
-                        <input type="text" class="form-control" name="username" id="username" placeholder="会员卡号"/>
+                        <input type="text" class="form-control" name="name" id="name"/>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-key"></i>
+                            <i class="fa fa-key">密码</i>
                         </div>
-                        <input type="password" class="form-control" name="password" id="password" placeholder="密码"/>
+                        <input type="password" class="form-control" name="password" id="password"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-user">充值金额</i>
+                        </div>
+                        <input type="text" class="form-control" name="amount" id="amount"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-user">绑定银行卡号</i>
+                        </div>
+                        <input type="text" class="form-control" name="bankcard" id="bankcard"/>
                     </div>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block btn-login">
                         <i class="fa fa-sign-in"></i>
-                        登录
+                        注册
                     </button>
-                </div>
-                <div class="col-xs-6 col-md-offset-5">
-                    <a href="studentRegister.html">学生注册</a>
                 </div>
             </form>
         </div>

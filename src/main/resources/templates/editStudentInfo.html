@@ -18,7 +18,7 @@
                         <li><a href="/student/home">基本信息</a></li>
                         <li><a href="/course/all">选课</a></li>
                         <li><a href="/course/selected">退课</a></li>
-                        <li><a href="#">统计信息</a></li>
+                        <li><a href="/student/analysis">统计信息</a></li>
                         <li class="active"><a href="#">修改信息</a></li>
                     </ul>
                 </div>
@@ -39,6 +39,10 @@
                 <input type="submit" value="修改"/>
             </form>
         </div>
+        <h2>取消会员资格</h2>
+        <form method="post" action="/student/delete">
+            <button type="submit">取消会员资格</button>
+        </form>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery.js"></script>

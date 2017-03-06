@@ -1,9 +1,6 @@
 package cn.edu.nju.trainingsystem.dao;
 
-import cn.edu.nju.trainingsystem.entity.Clazz;
-import cn.edu.nju.trainingsystem.entity.DropRecord;
-import cn.edu.nju.trainingsystem.entity.EnrollRecord;
-import cn.edu.nju.trainingsystem.entity.EnrollRecordPK;
+import cn.edu.nju.trainingsystem.entity.*;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -71,5 +68,11 @@ public class CourseDaoImpl implements CourseDao {
         Query query = em.createQuery(sql);
         query.setParameter(1, username);
         return query.getResultList();
+    }
+
+    @Override
+    public boolean addApply(Apply apply) {
+        em.persist(apply);
+        return true;
     }
 }

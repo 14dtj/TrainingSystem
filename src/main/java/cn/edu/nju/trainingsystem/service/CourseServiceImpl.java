@@ -1,6 +1,7 @@
 package cn.edu.nju.trainingsystem.service;
 
 import cn.edu.nju.trainingsystem.dao.CourseDao;
+import cn.edu.nju.trainingsystem.entity.Apply;
 import cn.edu.nju.trainingsystem.entity.Clazz;
 import cn.edu.nju.trainingsystem.entity.DropRecord;
 import cn.edu.nju.trainingsystem.entity.EnrollRecord;
@@ -54,5 +55,10 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public List<Clazz> getSelectedCourse(String username) {
         return courseDao.getSelectedCourse(username);
+    }
+
+    @Override
+    public boolean applyAddCourse(Apply apply) {
+        return courseDao.addApply(apply);
     }
 }

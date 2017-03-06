@@ -57,12 +57,40 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     public List<Clazz> getHistorySelected(String username) {
-
-        return null;
+        String sql = "select c from Clazz c,EnrollRecord e where c.classId=e.classId and e.studentId=?1";
+        Query query = em.createQuery(sql);
+        query.setParameter(1, username);
+        return query.getResultList();
     }
 
     @Override
     public List<Clazz> getHistoryDroped(String username) {
-        return null;
+        String sql = "select c from Clazz c,DropRecord e where c.classId=e.classId and e.studentId=?1";
+        Query query = em.createQuery(sql);
+        query.setParameter(1, username);
+        return query.getResultList();
+    }
+
+    @Override
+    public boolean deleteStudent(String username) {
+        Student student = em.find(Student.class, username);
+        em.remove(student);
+        return true;
+    }
+
+    @Override
+    public boolean register(Student student) {
+        String sql = "select count(*) from Student s";
+        Query query = em.createQuery(sql);
+        long num = (long) query.getSingleResult();
+        String id = IdGenerator.generateId((int) num + 1, 's');
+        student.setId(id);
+        java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
+        student.setLastRechargeDate(currentDate);
+        student.setLevel(1);
+        student.setPoint(0.0);
+        student.setState("activated");
+        em.persist(student);
+        return true;
     }
 }

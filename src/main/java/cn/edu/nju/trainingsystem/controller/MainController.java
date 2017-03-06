@@ -1,5 +1,6 @@
 package cn.edu.nju.trainingsystem.controller;
 
+import cn.edu.nju.trainingsystem.service.InstitutionService;
 import cn.edu.nju.trainingsystem.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 public class MainController {
     @Autowired
     private StudentService studentService;
+    @Autowired
+    private InstitutionService institutionService;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(String username, String password, HttpServletRequest request) {
@@ -25,13 +28,14 @@ public class MainController {
                 return "redirect:/student/home";
             }
         } else if (username.startsWith("i")) {
-            return "hello";
-        } else if (username.equals("manager")) {
-            return "hello";
-        } else {
-            return "hello";
+            if (institutionService.login(username, password)) {
+                request.getSession().setAttribute("institution", username);
+                return "redirect:/institution/home";
+            }
+        } else if (username.equals("manager") && password.equals("admin")) {
+            return "managerHome";
         }
-        return "hello";
+        return "warning";
     }
 
 }

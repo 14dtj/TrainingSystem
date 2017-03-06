@@ -1,5 +1,6 @@
 package cn.edu.nju.trainingsystem.dao;
 
+import cn.edu.nju.trainingsystem.entity.Apply;
 import cn.edu.nju.trainingsystem.entity.Clazz;
 import cn.edu.nju.trainingsystem.entity.DropRecord;
 import cn.edu.nju.trainingsystem.entity.EnrollRecord;
@@ -24,4 +25,12 @@ public interface CourseDao {
      * @return
      */
     List<Clazz> getSelectedCourse(String username);
+
+    /**
+     * 申请添加课程
+     *
+     * @param apply
+     * @return
+     */
+    boolean addApply(Apply apply);
 }

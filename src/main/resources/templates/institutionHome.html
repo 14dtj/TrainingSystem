@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>南大青鸟培训机构</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#"></a>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">开班申请</a></li>
+                        <li><a href="/institution/courseList">修改班级信息</a></li>
+                        <li><a href="/student/analysis">成绩登记</a></li>
+                        <li><a href="/student/basicInfo">退课登记</a></li>
+                        <li><a href="/course/all">统计信息</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-md-offset-3">
+            <h1>开班申请</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-md-offset-3">
+            <form role="form" id="form_login" method="post" action="/course/add">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-user">课程名称</i>
+                        </div>
+                        <input type="text" class="form-control" name="name" id="name"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-key">教师</i>
+                        </div>
+                        <input type="text" class="form-control" name="teacher" id="teacher"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-user">开始日期</i>
+                        </div>
+                        <input type="date" class="form-control" name="start" id="start"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-user">结束日期</i>
+                        </div>
+                        <input type="date" class="form-control" name="end" id="end"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-user">价格</i>
+                        </div>
+                        <input type="text" class="form-control" name="price" id="price"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block btn-login" id="actionBtn">
+                        <i class="fa fa-sign-in"></i>
+                        申请开班
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="../static/js/bootstrap.js"></script>
+</body>
+</html>

@@ -54,4 +54,22 @@ public class StudentController {
         model.addAttribute("model", studentService.getAnalysisInfo(username));
         return "studentAnalysis";
     }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public String cancel(HttpServletRequest request) {
+        String username = (String) request.getSession().getAttribute("username");
+        studentService.deleteStudent(username);
+        return "redirect:/";
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String register(String name, String bankcard, String password, String amount) {
+        Student vo = new Student();
+        vo.setBankCard(bankcard);
+        vo.setName(name);
+        vo.setPassword(password);
+        vo.setBalance(Double.parseDouble(amount));
+        studentService.register(vo);
+        return "redirect:/";
+    }
 }
