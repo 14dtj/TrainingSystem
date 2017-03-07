@@ -1,10 +1,7 @@
 package cn.edu.nju.trainingsystem.service;
 
 import cn.edu.nju.trainingsystem.dao.CourseDao;
-import cn.edu.nju.trainingsystem.entity.Apply;
-import cn.edu.nju.trainingsystem.entity.Clazz;
-import cn.edu.nju.trainingsystem.entity.DropRecord;
-import cn.edu.nju.trainingsystem.entity.EnrollRecord;
+import cn.edu.nju.trainingsystem.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,7 +55,17 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public boolean applyAddCourse(Apply apply) {
+    public boolean applyAddCourse(AddApply apply) {
         return courseDao.addApply(apply);
+    }
+
+    @Override
+    public boolean applyEditCourse(EditApply apply) {
+        return courseDao.editApply(apply);
+    }
+
+    @Override
+    public boolean editCourse(Clazz clazz) {
+        return courseDao.editCourse(clazz);
     }
 }

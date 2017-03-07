@@ -4,11 +4,11 @@ import javax.persistence.*;
 import java.sql.Date;
 
 /**
- * Created by tjDu on 2017/3/6.
+ * Created by tjDu on 2017/3/7.
  */
 @Entity
-@Table(name = "apply", schema = "training_college")
-public class Apply {
+@Table(name = "add_apply", schema = "training_college")
+public class AddApply {
     private String institutionId;
     private Date startTime;
     private Date endTime;
@@ -92,16 +92,16 @@ public class Apply {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Apply apply = (Apply) o;
+        AddApply addApply = (AddApply) o;
 
-        if (id != apply.id) return false;
-        if (institutionId != null ? !institutionId.equals(apply.institutionId) : apply.institutionId != null)
+        if (id != addApply.id) return false;
+        if (institutionId != null ? !institutionId.equals(addApply.institutionId) : addApply.institutionId != null)
             return false;
-        if (startTime != null ? !startTime.equals(apply.startTime) : apply.startTime != null) return false;
-        if (endTime != null ? !endTime.equals(apply.endTime) : apply.endTime != null) return false;
-        if (courseName != null ? !courseName.equals(apply.courseName) : apply.courseName != null) return false;
-        if (teacher != null ? !teacher.equals(apply.teacher) : apply.teacher != null) return false;
-        if (price != null ? !price.equals(apply.price) : apply.price != null) return false;
+        if (startTime != null ? !startTime.equals(addApply.startTime) : addApply.startTime != null) return false;
+        if (endTime != null ? !endTime.equals(addApply.endTime) : addApply.endTime != null) return false;
+        if (courseName != null ? !courseName.equals(addApply.courseName) : addApply.courseName != null) return false;
+        if (teacher != null ? !teacher.equals(addApply.teacher) : addApply.teacher != null) return false;
+        if (price != null ? !price.equals(addApply.price) : addApply.price != null) return false;
 
         return true;
     }

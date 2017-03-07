@@ -16,7 +16,8 @@
         <mapping class="cn.edu.nju.trainingsystem.entity.Student"/>
         <mapping class="cn.edu.nju.trainingsystem.entity.Expense"/>
         <mapping class="cn.edu.nju.trainingsystem.entity.Institution"/>
-        <mapping class="cn.edu.nju.trainingsystem.entity.Apply"/>
+        <mapping class="cn.edu.nju.trainingsystem.entity.AddApply"/>
+        <mapping class="cn.edu.nju.trainingsystem.entity.EditApply"/>
 
 
         <!-- DB schema will be updated if needed -->

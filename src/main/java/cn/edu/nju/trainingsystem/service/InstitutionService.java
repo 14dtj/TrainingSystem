@@ -1,7 +1,10 @@
 package cn.edu.nju.trainingsystem.service;
 
 import cn.edu.nju.trainingsystem.entity.Clazz;
+import cn.edu.nju.trainingsystem.entity.GradeRecord;
 import cn.edu.nju.trainingsystem.entity.Institution;
+import cn.edu.nju.trainingsystem.vo.InstitutionAnalysisVO;
+import cn.edu.nju.trainingsystem.vo.WithdrawVO;
 
 import java.util.List;
 
@@ -41,4 +44,37 @@ public interface InstitutionService {
      * @return
      */
     Clazz getSpecific(String id);
+
+    /**
+     * 登记成绩
+     *
+     * @param record
+     * @return
+     */
+    boolean registerGrade(GradeRecord record);
+
+    /**
+     * 学员结账
+     *
+     * @param studentId
+     * @param amount
+     * @return
+     */
+    boolean checkout(String studentId, String amount, String institutionId);
+
+    /**
+     * 学员退课
+     *
+     * @param vo
+     * @return
+     */
+    boolean withdraw(WithdrawVO vo);
+
+    /**
+     * 查看机构统计信息
+     *
+     * @param id
+     * @return
+     */
+    InstitutionAnalysisVO getAnalysis(String id);
 }

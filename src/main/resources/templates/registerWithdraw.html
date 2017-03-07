@@ -16,9 +16,9 @@
                 <div>
                     <ul class="nav navbar-nav">
                         <li><a href="/institution/home">开班申请</a></li>
-                        <li class="active"><a href="/institution/courseList">修改班级信息</a></li>
+                        <li><a href="/institution/courseList">修改班级信息</a></li>
                         <li><a href="/institution/grade/register">成绩登记</a></li>
-                        <li><a href="/institution/withdraw">退课登记</a></li>
+                        <li class="active"><a href="#">退课登记</a></li>
                         <li><a href="/institution/payment">学员结账</a></li>
                         <li><a href="/institution/analysis">统计信息</a></li>
                     </ul>
@@ -28,57 +28,32 @@
     </div>
     <div class="row">
         <div class="col-xs-6 col-md-offset-3">
-            <h1>修改班级信息</h1>
+            <h1>成绩登记</h1>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-6 col-md-offset-3">
-            <form role="form" id="form_login" method="post" th:action="'/course/edit/'+${model.classId}">
+            <form role="form" id="form_login" method="post" action="/institution/withdraw">
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-user">课程名称</i>
+                            <i class="fa fa-user">学生姓名</i>
                         </div>
-                        <input type="text" class="form-control" name="name" id="name" th:value="${model.courseName}"/>
+                        <input type="text" class="form-control" name="studentName" id="studentName"/>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-key">教师</i>
+                            <i class="fa fa-key">课程名称</i>
                         </div>
-                        <input type="text" class="form-control" name="teacher" id="teacher"
-                               th:value="${model.teacher}"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="fa fa-user">开始日期</i>
-                        </div>
-                        <input type="date" class="form-control" name="start" id="start" th:value="${model.startTime}"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="fa fa-user">结束日期</i>
-                        </div>
-                        <input type="date" class="form-control" name="end" id="end" th:value="${model.endTime}"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="fa fa-user">价格</i>
-                        </div>
-                        <input type="text" class="form-control" name="price" id="price" th:value="${model.price}"/>
+                        <input type="text" class="form-control" name="courseName" id="courseName"/>
                     </div>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block btn-login" id="actionBtn">
                         <i class="fa fa-sign-in"></i>
-                        申请修改
+                        退课
                     </button>
                 </div>
             </form>

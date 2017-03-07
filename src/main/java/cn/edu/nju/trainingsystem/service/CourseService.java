@@ -1,7 +1,8 @@
 package cn.edu.nju.trainingsystem.service;
 
-import cn.edu.nju.trainingsystem.entity.Apply;
+import cn.edu.nju.trainingsystem.entity.AddApply;
 import cn.edu.nju.trainingsystem.entity.Clazz;
+import cn.edu.nju.trainingsystem.entity.EditApply;
 
 import java.util.List;
 
@@ -48,5 +49,20 @@ public interface CourseService {
      * @param apply
      * @return
      */
-    boolean applyAddCourse(Apply apply);
+    boolean applyAddCourse(AddApply apply);
+
+    /**
+     * 修改班级信息申请
+     *
+     * @param apply
+     * @return
+     */
+    boolean applyEditCourse(EditApply apply);
+
+    /***
+     * 修改班级信息
+     * @param clazz
+     * @return
+     */
+    boolean editCourse(Clazz clazz);
 }

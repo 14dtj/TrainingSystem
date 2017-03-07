@@ -31,19 +31,19 @@ public class CourseDaoImpl implements CourseDao {
     public boolean selectCourse(List<EnrollRecord> data) {
         for (EnrollRecord record : data) {
             em.persist(record);
-            em.flush();
-            String sql = "insert into institution_payment(institution_id,payment) " +
-                    "select e.institution_id,c.price from enroll_record e , class  c " +
-                    "where c.class_id = e.class_id and e.student_id = ?1 and e.class_id =?2 ";
-            Query query = em.createNativeQuery(sql);
-            query.setParameter(1, record.getStudentId()).setParameter(2, record.getClassId());
-            query.executeUpdate();
-            sql = "insert into expense(student_id,expense) " +
-                    "select e.student_id ,c.price from enroll_record e , class  c " +
-                    "where c.class_id = e.class_id and e.student_id = ?1 and e.class_id =?2 ";
-            query = em.createNativeQuery(sql);
-            query.setParameter(1, record.getStudentId()).setParameter(2, record.getClassId());
-            query.executeUpdate();
+//            em.flush();
+//            String sql = "insert into institution_payment(institution_id,payment) " +
+//                    "select e.institution_id,c.price from enroll_record e , class  c " +
+//                    "where c.class_id = e.class_id and e.student_id = ?1 and e.class_id =?2 ";
+//            Query query = em.createNativeQuery(sql);
+//            query.setParameter(1, record.getStudentId()).setParameter(2, record.getClassId());
+//            query.executeUpdate();
+//            sql = "insert into expense(student_id,expense) " +
+//                    "select e.student_id ,c.price from enroll_record e , class  c " +
+//                    "where c.class_id = e.class_id and e.student_id = ?1 and e.class_id =?2 ";
+//            query = em.createNativeQuery(sql);
+//            query.setParameter(1, record.getStudentId()).setParameter(2, record.getClassId());
+//            query.executeUpdate();
         }
         return true;
     }
@@ -71,8 +71,25 @@ public class CourseDaoImpl implements CourseDao {
     }
 
     @Override
-    public boolean addApply(Apply apply) {
+    public boolean addApply(AddApply apply) {
         em.persist(apply);
+        return true;
+    }
+
+    @Override
+    public boolean editApply(EditApply apply) {
+        em.persist(apply);
+        return true;
+    }
+
+    @Override
+    public boolean editCourse(Clazz clazz) {
+        Clazz old = em.find(Clazz.class, clazz.getClassId());
+        old.setPrice(clazz.getPrice());
+        old.setTeacher(clazz.getTeacher());
+        old.setEndTime(clazz.getEndTime());
+        old.setStartTime(clazz.getStartTime());
+        old.setCourseName(clazz.getCourseName());
         return true;
     }
 }

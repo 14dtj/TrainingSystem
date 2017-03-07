@@ -6,32 +6,12 @@ import javax.persistence.*;
  * Created by tjDu on 2017/3/5.
  */
 @Entity
-@Table(name = "grade_record", schema = "training_college", catalog = "")
+@Table(name = "grade_record", schema = "training_college")
 @IdClass(GradeRecordPK.class)
 public class GradeRecord {
-    private int studentId;
-    private int classId;
     private Double grade;
-
-    @Id
-    @Column(name = "student_id", nullable = false)
-    public int getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(int studentId) {
-        this.studentId = studentId;
-    }
-
-    @Id
-    @Column(name = "class_id", nullable = false)
-    public int getClassId() {
-        return classId;
-    }
-
-    public void setClassId(int classId) {
-        this.classId = classId;
-    }
+    private String studentName;
+    private String className;
 
     @Basic
     @Column(name = "grade", nullable = true, precision = 0)
@@ -43,25 +23,24 @@ public class GradeRecord {
         this.grade = grade;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        GradeRecord that = (GradeRecord) o;
-
-        if (studentId != that.studentId) return false;
-        if (classId != that.classId) return false;
-        if (grade != null ? !grade.equals(that.grade) : that.grade != null) return false;
-
-        return true;
+    @Id
+    @Column(name = "student_name", nullable = false, length = 11)
+    public String getStudentName() {
+        return studentName;
     }
 
-    @Override
-    public int hashCode() {
-        int result = studentId;
-        result = 31 * result + classId;
-        result = 31 * result + (grade != null ? grade.hashCode() : 0);
-        return result;
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    @Id
+    @Column(name = "class_name", nullable = false, length = 11)
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
     }
 }

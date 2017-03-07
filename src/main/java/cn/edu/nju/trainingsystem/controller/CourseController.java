@@ -1,6 +1,7 @@
 package cn.edu.nju.trainingsystem.controller;
 
-import cn.edu.nju.trainingsystem.entity.Apply;
+import cn.edu.nju.trainingsystem.entity.AddApply;
+import cn.edu.nju.trainingsystem.entity.EditApply;
 import cn.edu.nju.trainingsystem.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -66,9 +66,9 @@ public class CourseController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public void applyAddCourse(String teacher, String price, Date start, Date end, String name,
-                                 HttpServletRequest request, HttpServletResponse response) {
+                               HttpServletRequest request, HttpServletResponse response) {
         String id = (String) request.getSession().getAttribute("institution");
-        Apply vo = new Apply();
+        AddApply vo = new AddApply();
         vo.setCourseName(name);
         vo.setEndTime(end);
         vo.setStartTime(start);
@@ -76,6 +76,22 @@ public class CourseController {
         vo.setPrice(Double.parseDouble(price));
         vo.setTeacher(teacher);
         courseService.applyAddCourse(vo);
+        ResponseHelper.generateAlert(response, "申请成功！等待经理审批！");
+    }
+
+    @RequestMapping(value = "/edit/{classId}", method = RequestMethod.POST)
+    public void applyEditCourse(@PathVariable String classId, String teacher, String price, Date start, Date end, String name,
+                                HttpServletRequest request, HttpServletResponse response) {
+        String id = (String) request.getSession().getAttribute("institution");
+        EditApply vo = new EditApply();
+        vo.setCourseName(name);
+        vo.setEndTime(end);
+        vo.setStartTime(start);
+        vo.setInstitutionId(id);
+        vo.setPrice(Double.parseDouble(price));
+        vo.setTeacher(teacher);
+        vo.setClassId(Integer.parseInt(classId));
+        courseService.applyEditCourse(vo);
         ResponseHelper.generateAlert(response, "申请成功！等待经理审批！");
     }
 }

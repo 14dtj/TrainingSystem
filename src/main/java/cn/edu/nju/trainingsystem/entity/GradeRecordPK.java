@@ -8,46 +8,26 @@ import java.io.Serializable;
  * Created by tjDu on 2017/3/5.
  */
 public class GradeRecordPK implements Serializable {
-    private int studentId;
-    private int classId;
+    private String studentName;
+    private String className;
 
-    @Column(name = "student_id", nullable = false)
+    @Column(name = "student_name", nullable = false, length = 11)
     @Id
-    public int getStudentId() {
-        return studentId;
+    public String getStudentName() {
+        return studentName;
     }
 
-    public void setStudentId(int studentId) {
-        this.studentId = studentId;
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
     }
 
-    @Column(name = "class_id", nullable = false)
+    @Column(name = "class_name", nullable = false, length = 11)
     @Id
-    public int getClassId() {
-        return classId;
+    public String getClassName() {
+        return className;
     }
 
-    public void setClassId(int classId) {
-        this.classId = classId;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        GradeRecordPK that = (GradeRecordPK) o;
-
-        if (studentId != that.studentId) return false;
-        if (classId != that.classId) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = studentId;
-        result = 31 * result + classId;
-        return result;
+    public void setClassName(String className) {
+        this.className = className;
     }
 }

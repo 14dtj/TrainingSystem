@@ -1,9 +1,6 @@
 package cn.edu.nju.trainingsystem.dao;
 
-import cn.edu.nju.trainingsystem.entity.Apply;
-import cn.edu.nju.trainingsystem.entity.Clazz;
-import cn.edu.nju.trainingsystem.entity.DropRecord;
-import cn.edu.nju.trainingsystem.entity.EnrollRecord;
+import cn.edu.nju.trainingsystem.entity.*;
 
 import java.util.List;
 
@@ -32,5 +29,21 @@ public interface CourseDao {
      * @param apply
      * @return
      */
-    boolean addApply(Apply apply);
+    boolean addApply(AddApply apply);
+
+    /**
+     * 申请修改课程
+     *
+     * @param apply
+     * @return
+     */
+    boolean editApply(EditApply apply);
+
+    /**
+     * 修改课程
+     *
+     * @param clazz
+     * @return
+     */
+    boolean editCourse(Clazz clazz);
 }

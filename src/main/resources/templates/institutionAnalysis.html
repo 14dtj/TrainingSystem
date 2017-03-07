@@ -16,44 +16,71 @@
                 <div>
                     <ul class="nav navbar-nav">
                         <li><a href="/institution/home">开班申请</a></li>
-                        <li class="active"><a href="#">修改班级信息</a></li>
+                        <li><a href="/institution/courseList">修改班级信息</a></li>
                         <li><a href="/institution/grade/register">成绩登记</a></li>
                         <li><a href="/institution/withdraw">退课登记</a></li>
                         <li><a href="/institution/payment">学员结账</a></li>
-                        <li><a href="/institution/analysis">统计信息</a></li>
+                        <li class="active"><a href="#">统计信息</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
     </div>
-    <div class="row">
-        <div class="col-xs-6 col-md-offset-5">
-            <h1>班级信息</h1>
-        </div>
-    </div>
+    <h2>本机构选课记录</h2>
     <div class="table-responsive">
         <table class="table">
             <thead>
             <tr>
                 <th>课程名称</th>
-                <th>开始日期</th>
-                <th>结束日期</th>
-                <th>授课老师</th>
-                <th>价格</th>
+                <th>学员姓名</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="course : ${model}">
-                <td><a th:href="@{'/institution/course/'+${course.classId}}" th:text="${course.courseName}"></a>
-                </td>
+            <tr th:each="course : ${model.enrollRecordList}">
+                <td th:text="${course.courseName}">课程名称</td>
                 <td th:text="${course.startTime}">开始日期</td>
-                <td th:text="${course.endTime}">结束日期</td>
-                <td th:text="${course.teacher}">授课老师</td>
-                <td th:text="${course.price}">价格</td>
             </tr>
             </tbody>
         </table>
     </div>
+    <h2>本机构退选记录</h2>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>课程名称</th>
+                <th>学员姓名</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="course : ${model.dropRecordList}">
+                <td th:text="${course.courseName}">课程名称</td>
+                <td th:text="${course.startTime}">开始日期</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <h2>学员成绩情况</h2>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>课程名称</th>
+                <th>学员姓名</th>
+                <th>成绩</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="ex : ${model.expenseList}">
+                <td th:text="${ex.date}">时间</td>
+                <td th:text="${ex.expense}">花销</td>
+                <td th:text="${ex.expense}">花销</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <h2>机构余额</h2>
+    <span th:value=""></span>
 </div>
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="../static/js/bootstrap.js"></script>
