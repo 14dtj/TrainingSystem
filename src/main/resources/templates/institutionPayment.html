@@ -28,7 +28,7 @@
     </div>
     <div class="row">
         <div class="col-xs-6 col-md-offset-3">
-            <h1>学员结账</h1>
+            <h1>选课结账</h1>
         </div>
     </div>
     <div class="row">
@@ -65,6 +65,39 @@
                     <button type="submit" class="btn btn-primary btn-block btn-login" id="actionBtn">
                         <i class="fa fa-sign-in"></i>
                         结账
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-md-offset-3">
+            <h1>会费支付</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-md-offset-3">
+            <form role="form" method="post" action="/institution/payCard">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-key">学员Id</i>
+                        </div>
+                        <input type="text" class="form-control" name="id" id="id"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-key">金额</i>
+                        </div>
+                        <input type="text" class="form-control" name="money" id="money"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block btn-login">
+                        <i class="fa fa-sign-in"></i>
+                        支付会费
                     </button>
                 </div>
             </form>

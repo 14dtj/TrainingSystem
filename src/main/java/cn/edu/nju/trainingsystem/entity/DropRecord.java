@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by tjDu on 2017/3/5.
  */
 @Entity
-@Table(name = "drop_record", schema = "training_college", catalog = "")
+@Table(name = "drop_record", schema = "training_college")
 @IdClass(DropRecordPK.class)
 public class DropRecord {
     private String studentId;

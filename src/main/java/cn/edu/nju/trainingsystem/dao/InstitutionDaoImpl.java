@@ -96,4 +96,51 @@ public class InstitutionDaoImpl implements InstitutionDao {
         enrollRecord.setMark((byte) 1);
         return true;
     }
+
+    @Override
+    public List<EnrollRecord> getEnrollRecords(String institutionId) {
+        String sql = "from EnrollRecord r where r.institutionId=?1 ";
+        Query query = em.createQuery(sql);
+        query.setParameter(1, institutionId);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<DropRecord> getDropRecords(String institutionId) {
+        String sql = "from DropRecord r where r.institutionId=?1 ";
+        Query query = em.createQuery(sql);
+        query.setParameter(1, institutionId);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<GradeRecord> getGradeRecords(String institutionId) {
+        String sql = "from GradeRecord g where g.className in (select c.courseName from Clazz c where c.institutionId=?1) ";
+        Query query = em.createQuery(sql);
+        query.setParameter(1, institutionId);
+        return query.getResultList();
+    }
+
+    @Override
+    public double getBalance(String institutionId) {
+        return em.find(Institution.class, institutionId).getBalance();
+    }
+
+    @Override
+    public boolean recharge(String studentId, String amount, String institutionId) {
+        double money = Double.parseDouble(amount);
+        Expense expense = new Expense();
+        expense.setExpense(money);
+        expense.setStudentId(studentId);
+        InstitutionPayment payment = new InstitutionPayment();
+        payment.setInstitutionId(institutionId);
+        payment.setPayment(money);
+        checkout(expense, payment);
+        Student student = em.find(Student.class, studentId);
+        student.setBalance(student.getBalance() + money);
+        java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
+        student.setLastRechargeDate(currentDate);
+        student.setState("activated");
+        return true;
+    }
 }

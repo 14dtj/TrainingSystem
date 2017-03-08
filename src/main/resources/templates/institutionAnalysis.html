@@ -31,14 +31,14 @@
         <table class="table">
             <thead>
             <tr>
-                <th>课程名称</th>
-                <th>学员姓名</th>
+                <th>课程编号</th>
+                <th>学员编号</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="course : ${model.enrollRecordList}">
-                <td th:text="${course.courseName}">课程名称</td>
-                <td th:text="${course.startTime}">开始日期</td>
+            <tr th:each="course : ${model.enrollRecords}">
+                <td th:text="${course.classId}"></td>
+                <td th:text="${course.studentId}"></td>
             </tr>
             </tbody>
         </table>
@@ -48,14 +48,14 @@
         <table class="table">
             <thead>
             <tr>
-                <th>课程名称</th>
-                <th>学员姓名</th>
+                <th>课程编号</th>
+                <th>学员编号</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="course : ${model.dropRecordList}">
-                <td th:text="${course.courseName}">课程名称</td>
-                <td th:text="${course.startTime}">开始日期</td>
+            <tr th:each="course : ${model.dropRecords}">
+                <td th:text="${course.classId}">课程名称</td>
+                <td th:text="${course.studentId}"></td>
             </tr>
             </tbody>
         </table>
@@ -71,16 +71,16 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="ex : ${model.expenseList}">
-                <td th:text="${ex.date}">时间</td>
-                <td th:text="${ex.expense}">花销</td>
-                <td th:text="${ex.expense}">花销</td>
+            <tr th:each="ex : ${model.gradeRecords}">
+                <td th:text="${ex.className}"></td>
+                <td th:text="${ex.studentName}"></td>
+                <td th:text="${ex.grade}"></td>
             </tr>
             </tbody>
         </table>
     </div>
     <h2>机构余额</h2>
-    <span th:value=""></span>
+    <span th:text="${model.balance}"></span>
 </div>
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="../static/js/bootstrap.js"></script>

@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>南大青鸟培训机构</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#"></a>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="/manager/home">机构注册</a></li>
+                        <li><a href="/manager/examine">审批机构申请</a></li>
+                        <li><a href="/manager/analysis">统计信息</a></li>
+                        <li class="active"><a href="#">财务情况</a></li>
+                        <li><a href="/manager/pay">支付结算</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <h2>各机构余额</h2>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>机构编号</th>
+                <th>机构名称</th>
+                <th>余额</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="ins : ${model}">
+                <td th:text="${ins.id}"></td>
+                <td th:text="${ins.name}"></td>
+                <td th:text="${ins.balance}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="../static/js/bootstrap.js"></script>
+
+</body>
+</html>

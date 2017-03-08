@@ -58,11 +58,4 @@ public interface CourseService {
      * @return
      */
     boolean applyEditCourse(EditApply apply);
-
-    /***
-     * 修改班级信息
-     * @param clazz
-     * @return
-     */
-    boolean editCourse(Clazz clazz);
 }

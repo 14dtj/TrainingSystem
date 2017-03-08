@@ -31,4 +31,6 @@ public interface InstitutionDao {
 
     double getBalance(String institutionId);
 
+    boolean recharge(String studentId, String amount, String institutionId);
+
 }

@@ -118,4 +118,14 @@ public class InstitutionController {
         model.addAttribute("model", vo);
         return "institutionAnalysis";
     }
+
+    @RequestMapping(value = "/payCard", method = RequestMethod.POST)
+    public void recharge(String id, String money, HttpServletRequest request, HttpServletResponse response) {
+        String institution = (String) request.getSession().getAttribute("institution");
+        if (institutionService.recharge(id, money, institution)) {
+            ResponseHelper.generateAlert(response, "充值成功！");
+        } else {
+            ResponseHelper.generateAlert(response, "充值失败！");
+        }
+    }
 }

@@ -63,9 +63,4 @@ public class CourseServiceImpl implements CourseService {
     public boolean applyEditCourse(EditApply apply) {
         return courseDao.editApply(apply);
     }
-
-    @Override
-    public boolean editCourse(Clazz clazz) {
-        return courseDao.editCourse(clazz);
-    }
 }

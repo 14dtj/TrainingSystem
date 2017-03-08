@@ -68,4 +68,9 @@ public class InstitutionServiceImpl implements InstitutionService {
         return vo;
     }
 
+    @Override
+    public boolean recharge(String studentId, String amount, String institutionId) {
+        return institutionDao.recharge(studentId, amount, institutionId);
+    }
+
 }

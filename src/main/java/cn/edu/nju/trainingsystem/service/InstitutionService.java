@@ -77,4 +77,14 @@ public interface InstitutionService {
      * @return
      */
     InstitutionAnalysisVO getAnalysis(String id);
+
+    /**
+     * 会员卡充值
+     *
+     * @param studentId
+     * @param amount
+     * @param institutionId
+     * @return
+     */
+    boolean recharge(String studentId, String amount, String institutionId);
 }

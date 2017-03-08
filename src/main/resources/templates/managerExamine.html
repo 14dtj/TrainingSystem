@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>南大青鸟培训机构</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#"></a>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="/manager/home">机构注册</a></li>
+                        <li class="active"><a href="#">审批机构申请</a></li>
+                        <li><a href="/manager/analysis">统计信息</a></li>
+                        <li><a href="/manager/finance">财务情况</a></li>
+                        <li><a href="/manager/pay">支付结算</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <h2>注册课程申请</h2>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>机构编号</th>
+                <th>课程名</th>
+                <th>开始日期</th>
+                <th>结束日期</th>
+                <th>老师</th>
+                <th>价格</th>
+                <th>选择</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="apply: ${addApply}">
+                <td th:text="${apply.institutionId}">机构编号</td>
+                <td th:text="${apply.courseName}">课程名</td>
+                <td th:text="${apply.startTime}">开始日期</td>
+                <td th:text="${apply.endTime}">结束日期</td>
+                <td th:text="${apply.teacher}">老师</td>
+                <td th:text="${apply.price}">价格</td>
+                <td><input type="checkbox" name="chk" th:value="${apply.id}"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-xs-6 col-md-offset-5">
+        <button class="btn btn-default" id="actionBtn">审批通过</button>
+    </div>
+    <hr/>
+    <h2>修改课程申请</h2>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>机构编号</th>
+                <th>课程名</th>
+                <th>课程编号</th>
+                <th>开始日期</th>
+                <th>结束日期</th>
+                <th>老师</th>
+                <th>价格</th>
+                <th>选择</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="apply: ${editApply}">
+                <td th:text="${apply.institutionId}">机构编号</td>
+                <td th:text="${apply.courseName}">课程名</td>
+                <td th:text="${apply.classId}">课程编号</td>
+                <td th:text="${apply.startTime}">开始日期</td>
+                <td th:text="${apply.endTime}">结束日期</td>
+                <td th:text="${apply.teacher}">老师</td>
+                <td th:text="${apply.price}">价格</td>
+                <td><input type="checkbox" name="chk" th:value="${apply.classId}"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-xs-6 col-md-offset-5">
+        <button class="btn btn-default" id="editBtn">审批通过</button>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="../static/js/bootstrap.js"></script>
+<script src="js/jquery.min.js"></script>
+<script>
+    $('#actionBtn').bind("click", function () {
+        var list = new Array();
+        $('input[type="checkbox"][name="chk"]:checked').each(
+            function () {
+                list.push($(this).val());
+            }
+        );
+
+        $.ajax("/manager/examineAdd/" + list, {
+            type: 'POST',
+            success: function (data) {
+                alert(data.msg);
+                location.reload();
+            },
+            error: function () {
+                alert("出错了！！:");
+            }
+        });
+    });
+    $('#editBtn').bind("click", function () {
+        var list = new Array();
+        $('input[type="checkbox"][name="chk"]:checked').each(
+            function () {
+                list.push($(this).val());
+            }
+        );
+
+        $.ajax("/manager/examineEdit/" + list, {
+            type: 'POST',
+            success: function (data) {
+                alert(data.msg);
+                location.reload();
+            },
+            error: function () {
+                alert("出错了！！:");
+            }
+        });
+    });
+</script>
+</body>
+</html>

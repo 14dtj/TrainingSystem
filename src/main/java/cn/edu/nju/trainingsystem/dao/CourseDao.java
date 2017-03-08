@@ -38,12 +38,4 @@ public interface CourseDao {
      * @return
      */
     boolean editApply(EditApply apply);
-
-    /**
-     * 修改课程
-     *
-     * @param clazz
-     * @return
-     */
-    boolean editCourse(Clazz clazz);
 }

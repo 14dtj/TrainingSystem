@@ -33,7 +33,7 @@ public class MainController {
                 return "redirect:/institution/home";
             }
         } else if (username.equals("manager") && password.equals("admin")) {
-            return "managerHome";
+            return "redirect:/manager/home";
         }
         return "warning";
     }

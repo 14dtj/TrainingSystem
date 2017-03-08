@@ -81,15 +81,4 @@ public class CourseDaoImpl implements CourseDao {
         em.persist(apply);
         return true;
     }
-
-    @Override
-    public boolean editCourse(Clazz clazz) {
-        Clazz old = em.find(Clazz.class, clazz.getClassId());
-        old.setPrice(clazz.getPrice());
-        old.setTeacher(clazz.getTeacher());
-        old.setEndTime(clazz.getEndTime());
-        old.setStartTime(clazz.getStartTime());
-        old.setCourseName(clazz.getCourseName());
-        return true;
-    }
 }
